@@ -1,0 +1,263 @@
+DJANGO REST FRAMEWORK courses
+
+
+https://www.youtube.com/watch?v=z6tjgvx7K2M&list=PLdBwVRHjcI_845VqggPzu4up0I33o-YO2&index=1
+
+https://github.com/virendrapatel62/DRF-Youtube
+
+https://www.django-rest-framework.org/tutorial/proj/
+
+NOTES
+-------------------------------------------------------------------------------------------------------------------------
+PRELIMINARY     PROJECT: proj  APP: proj.app
+======================================================================
+
+1) 
+cd D:/gm/pydjango
+mkdir courses
+
+
+cd courses
+
+
+
+2)  PHYTHON
+ D:\gm\pydjango> courses
+ 
+ >python   or py -3  (to know ver)
+>>> python 3.10.5
+>>>exit()         
+
+if python not found
+download python 3.10.5 or latest stable ver for windows
+
+3)  VSCODE
+check VS Code is installed under                             
+C:\Users\{Username}\AppData\Local\Programs\Microsoft VS Code .
+example
+C:\Users\rajesh\AppData\Local\Programs\Microsoft VS Code
+
+4)  VENV courses
+
+>py -3 -m venv venv
+
+5) courses
+
+>venv>scripts>activate
+
+6)  DJANGO
+cd ../..
+(venv>.. courses
+
+>pip install django
+
+7) UPGRADE PIP IF REQD
+(venv>...scripts>python.exe (or py -3) -m pip install --upgrade pip
+
+8) REST
+() .. courses
+
+>pip install djangorestframework
+
+9) PROJECT
+().. courses
+
+>django-admin startproject proj .(ending . to start project in same directory)
+
+10) APP
+cd proj
+().. courses
+
+>tutorial>django-admin startapp app
+
+11) SETTINGS
+().. courses
+
+>proj>settings.py                                                ----------------------------17
+INSTALLED_APPS=[
+'proj.app',
+]
+
+12) RUN SERVER
+().. courses
+
+>manage.py runserver
+
+13) localhost
+http://localhost:8000  .. 
+..install worked successfully
+
+http://localhost:8000/admin
+username: admin
+password das1xx!xx
+...no such table: auth_user
+--------------------------------------------------------------------------------------------------------------------------------------
+DIRECTORY
+
+D:/gm/pydjango courses
+
+
+
+. courses
+
+>
+manage.py    .python.exe    
+dir-proj
+
+. courses
+
+/proj>
+asgi.py  settings.py   urls.py   wsgi.py   --init--.py
+dir..app
+
+. courses
+
+/proj/app
+admin.py apps.py   models.py   tests.py    views.py     --init--.py
+dir-migration
+
+----------------------------------------------------------------------------------------------------------------------------------------
+14) CONNECT TO MySQL-SETTINGS.PY
+().. courses
+
+>proj>settings.py  
+                                              ----------------------------17
+INSTALLED_APPS=[
+'proj.app',
+'rest_framework',
+]
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'proj',
+        'HOST': 'localhost',
+        'PORT': 3306,
+        'USER': 'root',
+        'PASSWORD': 'mas123!@#',  
+    }
+}
+
+APPS.PY NAME AND SETTINGS.PY INSTALLED_APP SAME
+().. courses
+
+>proj>app>apps.py
+from django.apps import AppConfig
+
+class AppConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'proj.app'
+
+15) MYSQL CLIENT
+().. courses
+
+>pip3 install mysqlclient
+upgrade pip if required
+-------------------------------
+16) MIGRATE & SUPERUSER
+().. courses
+
+>py -3 manage.py migrate
+schema proj tables auth_user etc appear in mysql workbench
+().. courses
+
+>manage.py createsuperuser
+
+//().. courses
+
+>manage.py createsuperuser
+user: sriram
+password: das1xx!xx
+--------------------------
+17) SERVER
+().. courses
+
+>py -3 manage.py runserver
+localhost:8000
+localhost:8000/admin
+login: sriram
+pwd: das1xx!xx
+
+18) MYSQL workbench
+login: root
+pwd: mas1xx!xx
+see under
+schema proj
+tanles auth_user
+see stored auth_users
+----------------------------------------------------------------------------------------------------------------------------------
+19) CREATE FILES
+()... courses
+
+/tutorial/proj>models.py
+()... courses
+
+/tutorial/proj>views.py
+()... courses
+
+/tutorial/proj>serializer.py
+()... courses
+
+/tutorial>urls.py
+
+localhost:8000/users
+-------------------------------------------------------------------------------------------------------------------------
+20) MIGRATE FOR MODEL EMPLOYEE
+().. courses
+
+>manage.py makemigrations
+().. courses
+
+>manage.py migrate
+
+21) SERVER FOR API/EMPLOYEES
+localhost:8000/api/EMPLOYEES
+
+
+
+
+
+
+
+
+
+
+
+
+
+5) check mysql is installed under                                       ---5
+C:\Program Files\MySQL\MySQL Server 8.0 
+for example
+C:\Program Files (x86)\MySQL\MySQL Installer for Windows
+or
+download and install mysql installer                               --5
+
+(venv)....pydnajgo>manage.py runserver-----------------------------9
+
+
+http://localhost:8000  OR  http://127.0.0.0.1:8000------------------10
+
+(venv) ...mysite>manage,py createsuperuser-----------------------11
+(venv) ...mysite>manage.py makemigrations-----------------------12
+(venv) ...mysite>manage.py migrate-----------------------------------13
+
+sqliteonline.com-------------------------------------------------------------14
+file open
+d:\gm\pydjango\mysite>db or dbsqlite3------------------------------15
+auth_user
+select * from auth_user
+
+() ..mysite>manage.py; createsuperuser-----------------------------16
+username  sriram
+email  sriram5@example.com
+pwd  das1xx!xx
+
+
+localhost:8000/admin ----------------------------------------------------18
+
+sqliteonline.com------------------------------------------------------------19
+file open
+d:\gm\pydjango\mysite>db or dbsqlite3-----------------------------20
+auth_user
+select * from auth_user
+
+l  -------------------------------------

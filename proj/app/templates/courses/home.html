@@ -1,0 +1,54 @@
+{% extends 'courses/base.html' %} 
+{% load course_custom_tags %}
+{% block title %} 
+Courses
+{% endblock %}
+{% block content %}
+<div>   
+        <h3> from home.html thro base.html </h3>
+        <h3>username: {{request.user}}</h3>
+        <h3>request.username: {{request.username}}</h3>
+        <p>courses are: {{courses}}</p>      
+</div>      
+
+
+<div class="row">
+      
+        {% for course in object_list %}
+        <div class="card col" style="width: 18rem;">
+                <img src="{{course.thumbnail.url}}" class="mx-auto card-img-top img-fluid img-thumbnail" alt="thumbnail">
+                <div class="card-body">
+                        <h5 class="card-title">{{course.name}}</h5>
+                        <p class="card-text">{{course.description}}</p>
+                        <p class="card-text price">
+                                <del>price {{course.price|rupee}}</del>
+                                &nbsp;                     
+                                {% cal_sellprice course.price course.discount as value %}
+                                {{value|rupee}}</p>
+                        <p class="card-text">save {{course.discount}}%</p>
+                       
+                        <div class="card-footer p-0">
+                               
+                                {% is_enrolled request course as enrolled %}
+                                <div class="row no-gutters">
+                                        {% if enrolled %}
+                                        {{"enrolled"}}
+                                        <div class="col border-right">
+                                                <a href="/course/{{course.slug}}" class="float-right btn btn-primary">Start Course</a>
+                                        </div>
+                                        {% else %}
+                                        <div class="col border-right">
+                                                <a href="/check-out/{{course.slug}}" class="float-left btn btn-primary">Enroll Now</a>
+                                        </div>
+                                        <div class="col">
+                                                <a href="/course/{{course.slug}}" class="float-right btn btn-primary">Show More</a>
+                                        </div>
+                                        {% endif %}
+                                </div>
+                        </div>
+                </div>
+        </div> 
+        {% endfor %}
+</div>  
+
+{% endblock %}

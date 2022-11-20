@@ -1,0 +1,29 @@
+.overflow-y-scroll{
+        overflow-y:scroll;
+}
+.card-img-top {
+        width: 100%;
+        height: 40vh;
+        object-fit: contain;
+    }
+.price{
+        font-size: 20px;
+}
+.display-5 {
+        font-size: 35px;
+}
+
+/* 
+
+in base.html
+<!---
+<link rel="stylesheet" 
+href="{% static 'app/css/common.css' %}">  --->
+
+in proj/settings.py
+STATIC_URL = 'app/static/'
+
+url of common.css
+proj/app/static/app/css/common.css
+
+*/

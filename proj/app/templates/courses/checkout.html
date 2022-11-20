@@ -1,0 +1,120 @@
+{% extends 'courses/base.html' %} 
+{% load course_custom_tags %}
+{% block title %} 
+Courses
+{% endblock %}
+{% block content %}
+
+<div class="container">
+        <div>
+        <h3 class="display-4 alert border text-center">Checkout Page</h3>
+        <h3>user: {{user}}</h3>
+        <h3>request.user: {{request.user}}</h3>
+        <h3> you are going to enroll in {{course}} </h3>     
+       
+        </div>
+       
+        <div class="row" >
+
+                <div class="col mr-auto">
+                        <div class="card ml-auto border border-primary" style="width: 18rem;">
+                                <img class="card-img-top" src="{{course.thumbnail.url}}" alt="thumbnail">
+                                <div class="card-body">
+                                        <h5 class="card-title">{{course.name}}</h5>
+                                        <p class="card-text m-0 p-0">
+                                           save {{course.discount}}% <br/>
+                                            <span class="price">
+                                                <del>{{course.price|rupee}}</del>
+                                                &nbsp;         
+                                            </span>
+                                            <span>            
+                                                {% cal_sellprice course.price course.discount as value %}
+                                                {{value|rupee}}
+                                            </span>
+                                        </p>
+                                </div>
+                        </div>               
+                </div>  
+
+                <div class="col ml-auto">
+                        <div class="card mx-auto border border-success" style="width: 36rem; height: 100%">
+                                <div class="card-body">
+                                        <p class="display-5 card-title">{{course.name}}</p>
+                                        {% if coupon %} 
+                                        <p class="alert alert-light boder">
+                                                Coupon Code Applied
+                                                You have got {{coupon.discount}} % discount
+                                        </p>
+                                        <p class="display-5 card-title">Payable Amount:
+                                        <span>            
+                                                {% cal_sellprice course.price coupon.discount as value %}
+                                                {{value|rupee}}
+                                        </span>
+                                        <a href="?action=create_payment&couponcode={{coupon.code}}" 
+                                        class="btn btn-primary">Continue to Pay</a>
+                                        </p>   
+                                        {% else %}
+                                        <p class="display-5 card-title">Payable Amount:
+                                        <span>            
+                                                {% cal_sellprice course.price course.discount as value %}
+                                                {{value|rupee}}
+                                        </span>
+                                        </p>  
+                                        {% endif %} 
+                                      
+                                </div>
+                                <div class="mb-10 border border-success"> 
+                                        {% if coupon_code_message %} 
+                                        <div class="alert alert-info">
+                                                {{coupon_code_message}}
+                                        </div>  
+                                        {% endif %} 
+                                        
+                                        <form action="" method="'get">                                               
+                                                <div class="col-lg-5 form-group">
+                                                        <h4 m-5 p-5>  Coupon Code: </h4>
+                                                        <input type="text" name="couponcode" class="form-control" id="">
+                                                </div>
+                                                <div class="form-group">
+                                                        <input type="submit" class="mb-5 ml-3 mt-1 btn btn-primary" value="Apply">>
+                                                </div>
+                                        </form>
+                                </div>
+                        </div>                       
+                </div>
+
+        </div>
+</div>    
+<script src="https://checkout.razorpay.com/v1/checkout.js">
+</script>
+
+{% if order is not None %}
+<script>
+        var options = {
+            "key": "rzp_test_V0q6cfIvjThhgW", // Enter the Key ID generated from the Dashboard
+            "name": "Learn SW Co",
+            "description": "Payment for {{course.name}}",
+            "image": "data:image/jpeg;base64,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",
+            "order_id": "{{order.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "callback_url": "http://localhost:8000/verify_payment",
+            "prefill": {
+                "name": "{{user.username}}",
+                "email": "{{user.email}}",
+                "contact": "9999999999"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+            rzp1.open();        
+</script>
+{% endif %}
+
+{%if error is not None %}
+<script>
+window.onload=()=>{alert("{{error}}")}
+</script>
+{% endif %} 
+
+{% endblock %}

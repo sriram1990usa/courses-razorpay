@@ -1,0 +1,18 @@
+{% extends 'courses/base.html' %} 
+
+{% block content %}
+
+<div>
+        <h3> from signup.html </h3>
+        <h3>user: {{user}}</h3>
+        <h3>request.user: {{request.user}}</h3>
+        <form action="/signup" method="post">
+                {% csrf_token %}
+                <div>{{form.as_ul}}</div>
+                <input type="submit" class="btn btn-lg btn-primary" value="Register">
+        </form>
+       
+        
+</div>    
+
+{% endblock %}

@@ -87,7 +87,7 @@ USE_I18N = True
 USE_TZ = True
 USE_L10N = True
 
-STATIC_URL = 'app/static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
@@ -100,7 +100,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 mimetypes.add_type("text/css", ".css", True)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-KEY_ID='rzp_test_V0q6cfIvjThhgW'
-KEY_SECRET='C6C0rtQiRtFIfE9tmoXoMxEc' 
+KEY_ID='change me'
+if KEY_ID in os.environ:
+    KEY_ID = os.environ["KEY_ID"]
+KEY_SECRET='change me'
+if KEY_SECRET in os.environ:
+    KEY_SECRET = os.environ["KEY_SECRET"] 
 
 

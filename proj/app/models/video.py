@@ -1,4 +1,4 @@
-import tkinter as tk
+import tkinter as Tk
 from re import M
 from tkinter import CASCADE
 from django.db import models

@@ -1,5 +1,6 @@
 #import tkinter as tk
 #from re import M
+from tkinter import *
 from tkinter import CASCADE
 from django.db import models
 from proj.app.models.course import Course

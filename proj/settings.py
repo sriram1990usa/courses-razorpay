@@ -66,32 +66,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-'''
-DATABASE_URL = os.environ.get("DATABASE_URL")
-#DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
 
-#DATABASES = {"default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),}
-MAX_CONN_AGE = 1800
-
-#PGPASSWORD=<password> psql -h <host> -U <user> -p <port> -d <database>
-#postgresql://[user[:password]@][netloc][:port][/dbname]
-#postgresql:
-# //postgres     user
-# :********      password
-# @containers-us-west-53.railway.app     netloc
-# :6859           port
-# /railway        dbname
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'gboKoPTR0i6jC4TyAYtq',
-        'HOST': 'containers-us-west-53.railway.app',
-        'PORT': '6859',
-    }
-}
-'''
 AUTH_PASSWORD_VALIDATORS = [
     { 'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', },  
     { 'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
